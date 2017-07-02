@@ -22,7 +22,7 @@ int main(int argc, const char * argv[]) {
     char rate[7];//速率
     char satellites[3];//卫星颗数
     char course[5];//航向
-    double speed;
+    double speed;//速度
     int i;
     int math,math1,math2;
     FILE *fp;
@@ -36,7 +36,7 @@ int main(int argc, const char * argv[]) {
     }
     else
     {
-        fprintf(fr," 日期 , 时间 , 纬度/度 , 纬度方向 , 经度/度 , 经度方向 , 航向/度, 海拔/m , 速度/km/h , 卫星颗数/颗 \n");
+        fprintf(fr," 日期 ,时间(时:分:秒) ,纬度(度) ,纬度方向 ,经度(度) ,经度方向 ,航向(度),海拔(m) ,速度(km/h) ,卫星颗数(颗) \n");
     }
     
     while(fscanf(fp,"%s %s",sp1,sp2)!=EOF)
@@ -61,24 +61,24 @@ int main(int argc, const char * argv[]) {
         math1=10*(time[0]-'0');
         math2=1*(time[1]-'0');
         math=math1+math2+8;
-        fprintf(fr,"%d时",math);
-            
+        fprintf(fr,"%d:",math);
+         //时
         for(i=0; i<2; i++)
             time[i]=sp1[i+9];
         math1=10*(time[0]-'0');
         math2=1*(time[1]-'0');
         math=math1+math2;
         time[2]='\0';
-        fprintf(fr,"%d分",math);
-            
+        fprintf(fr,"%d:",math);
+         //分
         for(i=0; i<2; i++)
             time[i]=sp1[i+11];
         math1=10*(time[0]-'0');
         math2=1*(time[1]-'0');
         math=math1+math2;
         time[2]='\0';
-        fprintf(fr,"%d秒,  ",math);
-        
+        fprintf(fr,"%d,  ",math);
+         //秒
         for(i=0; i<8; i++)
             latitude[i]=sp1[i+16];
         latitude[10]='\0';
@@ -92,7 +92,7 @@ int main(int argc, const char * argv[]) {
         for(i=0; i<9; i++)
             longitude[i]=sp1[i+27];
         longitude[10]='\0';
-        fprintf(fr," %s, ",longitude);
+        fprintf(fr,"%s, ",longitude);
             //经度
         for(i=0; i<1; i++)
             longitude_direction[i]=sp1[i+37];
