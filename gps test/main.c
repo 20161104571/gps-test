@@ -21,7 +21,7 @@ int main(int argc, const char * argv[]) {
     char altitude[5];//海拔
     char rate[7];//速率
     char satellites[3];//卫星颗数
-    char course[5];//航向
+    char course[6];//航向
     double speed;//速度
     int i;
     int math,math1,math2;
@@ -54,7 +54,7 @@ int main(int argc, const char * argv[]) {
         for(i=0; i<6; i++)
             date[i]=sp1[i+51];
         date[2]='\0';
-        fprintf(fr,"%s日 , ",date);
+        fprintf(fr,"%s日, ",date);
             
         for(i=0; i<2; i++)
             time[i]=sp1[i+7];
@@ -77,26 +77,26 @@ int main(int argc, const char * argv[]) {
         math2=1*(time[1]-'0');
         math=math1+math2;
         time[2]='\0';
-        fprintf(fr,"%d,  ",math);
+        fprintf(fr,"%d, ",math);
          //秒
         for(i=0; i<8; i++)
             latitude[i]=sp1[i+16];
-        latitude[10]='\0';
-        fprintf(fr," %s, ",latitude);
+        latitude[9]='\0';
+        fprintf(fr,"%s, ",latitude);
             //纬度
         for(i=0; i<1; i++)
             latitude_direction[i]=sp1[i+25];
-        latitude_direction[2]='\0';
+        latitude_direction[1]='\0';
         fprintf(fr,"%s, ",latitude_direction);
             //纬度方向
         for(i=0; i<9; i++)
             longitude[i]=sp1[i+27];
-        longitude[10]='\0';
+        longitude[9]='\0';
         fprintf(fr,"%s, ",longitude);
             //经度
         for(i=0; i<1; i++)
             longitude_direction[i]=sp1[i+37];
-        longitude_direction[2]='\0';
+        longitude_direction[1]='\0';
         fprintf(fr,"%s, ",longitude_direction);
             //经度方向
         for(i=0; i<5; i++)
@@ -106,7 +106,7 @@ int main(int argc, const char * argv[]) {
             //航向
         for(i=0; i<4; i++)
             altitude[i]=sp2[i+43];
-        altitude[5]='\0';
+        altitude[4]='\0';
         fprintf(fr,"%s, ",altitude);
             //海拔
         for(i=0; i<5; i++)
@@ -117,7 +117,7 @@ int main(int argc, const char * argv[]) {
             //速度
         for(i=0; i<2; i++)
             satellites[i]=sp2[i+39];
-        satellites[3]='\0';
+        satellites[2]='\0';
         fprintf(fr,"%s\n",satellites);
             //卫星颗数
         }
